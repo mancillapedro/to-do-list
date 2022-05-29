@@ -9,7 +9,7 @@
         placeholder="Ingresa nueva tarea"
         v-model="inputTarea"
       />
-      <button type="submit">Crear</button>
+      <button type="submit">Añade</button>
     </form>
     <list-to-do :list="lista" @eliminar="eliminar" />
   </div>
