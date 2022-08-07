@@ -1,38 +1,24 @@
 <template>
   <div id="app">
-    <form @submit.prevent="addToDo">
-      <legend><h1>Crea una nueva tarea</h1></legend>
-      <label for="tarea">Tarea</label>
-      <input
-        id="tarea"
-        type="text"
-        placeholder="Ingresa nueva tarea"
-        v-model="inputTarea"
-      />
-      <button type="submit">Añade</button>
-    </form>
+    <form-component @newToDo="addToDo" />
     <list-to-do :list="lista" @eliminar="eliminar" />
   </div>
 </template>
 
 <script>
+import FormComponent from "./components/FormComponent.vue";
 import ListToDo from "./components/ListToDo.vue";
 
 export default {
   name: "App",
   components: {
     ListToDo,
+    FormComponent,
   },
-  data() {
-    return {
-      inputTarea: "",
-      lista: [],
-    };
-  },
+  data: () => ({ lista: [] }),
   methods: {
-    addToDo() {
-      if (this.inputTarea.trim()) this.lista.push(this.inputTarea);
-      this.inputTarea = "";
+    addToDo({ tarea }) {
+      this.lista.push(tarea);
     },
     eliminar({ index }) {
       this.lista.splice(index, 1);

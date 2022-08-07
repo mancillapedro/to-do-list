@@ -1,8 +1,8 @@
 <template>
   <ul>
     <li v-for="(tarea, i) in list" :key="i">
-      {{ tarea }}
-      <button @click="eliminar(i)">eliminar</button>
+      {{ `${i + 1}: ${tarea}` }}
+      <button @click="eliminar(i)" v-text="`eliminar`" />
     </li>
   </ul>
 </template>
@@ -24,7 +24,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 ul {
   display: inline-block;
